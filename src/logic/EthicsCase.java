@@ -15,19 +15,21 @@ public class EthicsCase {
     public Verdict verdict;
 
     public EthicsCase(String caseTitle, String description, String category) {
-		
+		this.caseTitle = caseTitle;
+		this.description = description;
+		this.category = category;
     }
 
-		public String getCaseTitle() {
-        return null;
+	public String getCaseTitle() {
+        return caseTitle;
     }
 
     public String getCaseDescription() {
-        return null;
+        return description;
     }
 
     public String getCategory() {
-        return null;
+        return category;
     }
 
     @Override

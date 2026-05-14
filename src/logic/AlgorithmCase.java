@@ -16,7 +16,7 @@ public class AlgorithmCase extends EthicsCase {
     }
 
     public String getBiasType() {
-        return null;
+        return biasType;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class IntellectualPropertyCase extends EthicsCase {
     }
 
     public String getIpType() {
-        return null;
+        return ipType;
     }
 
     @Override

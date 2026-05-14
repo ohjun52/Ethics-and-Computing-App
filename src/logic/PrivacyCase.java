@@ -12,11 +12,12 @@ public class PrivacyCase extends EthicsCase {
     private String dataType;
 
     public PrivacyCase(String caseTitle, String description, String dataType) {
-        super(caseTitle, description, "Privacy"); // 示例，具体category逻辑可根据需要调整
+        super(caseTitle, description, "Privacy");
+		this.dataType = dataType;
     }
 
     public String getDataType() {
-        return null;
+        return dataType;
     }
 
     @Override

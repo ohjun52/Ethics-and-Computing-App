@@ -16,7 +16,7 @@ public class MisinformationCase extends EthicsCase {
     }
 
     public String getMediaType() {
-        return null;
+        return mediaType;
     }
 
     @Override
