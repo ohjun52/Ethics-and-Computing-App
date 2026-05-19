@@ -12,32 +12,46 @@ public class Verdict {
     private String caseTitle;
     private String studentVerdict;
     private String reason;
+	
+	private static final String DEFUALT_TITLE = "null";
+	private static final String DEFUALT_VERDICT = "null";
+	private static final String DEFUALT_REASON = "null";
 
     public Verdict() {
+		caseTitle = DEFUALT_TITLE;
+		studentVerdict = DEFUALT_VERDICT;
+		reason = DEFUALT_REASON;
     }
 
     public Verdict(String caseTitle, String verdict, String reason) {
+		this.caseTitle = caseTitle;
+		studentVerdict = verdict;
+		this.reason = reason;
     }
 
     public void setCaseTitle(String title) {
+		caseTitle = title;
     }
 
     public String getCaseTitle() {
-        return null;
+        return caseTitle;
+
     }
 
     public void setReason(String reason) {
-    }
+		this.reason = reason;
+	}
 
     public String getReason() {
-        return null;
+        return reason;
     }
 
     public void setStudentVerdict(String verdict) {
+		studentVerdict = verdict;
     }
 
     public String getStudentVerdict() {
-        return null;
+        return studentVerdict;
     }
 
     @Override
