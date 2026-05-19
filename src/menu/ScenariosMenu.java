@@ -11,6 +11,8 @@ import logic.MainMenuData;
  */
 public class ScenariosMenu extends javax.swing.JFrame {
 	
+	private static final int MAX_NUMBER = 3;
+	
 	private static int scenariosNumber = 0;
 
     /**
@@ -18,10 +20,18 @@ public class ScenariosMenu extends javax.swing.JFrame {
      */
     public ScenariosMenu() {
         initComponents();
+		scenariosNumber = 0;
+		initMenu();
+    }
+	
+	private void initMenu()
+	{
+		buttonGroup1.add(jRadioButton1);
+		buttonGroup1.add(jRadioButton2);
 		jLabel2.setText(MainMenuData.cases[scenariosNumber].getCaseTitle());
 		jLabel4.setText(MainMenuData.cases[scenariosNumber].getCategory());
 		jTextField1.setText(MainMenuData.cases[scenariosNumber].getCaseDescription());
-    }
+	}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,6 +43,7 @@ public class ScenariosMenu extends javax.swing.JFrame {
     private void initComponents()
     {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -59,6 +70,13 @@ public class ScenariosMenu extends javax.swing.JFrame {
         jLabel5.setText("Reason:");
 
         jButton1.setText("Submit >");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,6 +137,20 @@ public class ScenariosMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+		if(scenariosNumber < MAX_NUMBER)
+		{
+			scenariosNumber++;
+			initMenu();
+		}
+		else
+		{
+			this.dispose();
+		}
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -155,6 +187,7 @@ public class ScenariosMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
