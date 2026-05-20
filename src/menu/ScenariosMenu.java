@@ -23,6 +23,8 @@ public class ScenariosMenu extends javax.swing.JFrame {
      */
     public ScenariosMenu() {
         initComponents();
+		MainMenuData.loadCasesFromFile();
+		
 		scenariosNumber = 0;
 		buttonGroup1.add(jRadioButton1);
 		jRadioButton1.setActionCommand(ETHICAL_COMMAND);

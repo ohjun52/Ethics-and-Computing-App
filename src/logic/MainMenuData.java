@@ -16,15 +16,15 @@ import java.util.Scanner;
 public class MainMenuData
 {
 	public static final int MAX_CASES = 8;
-        public static EthicsCase[] cases = new EthicsCase[MAX_CASES];
+	public static EthicsCase[] cases = new EthicsCase[MAX_CASES];
 
         
-        public static void loadCasesFromFile(String fileName) {
+	public static void loadCasesFromFile() {
         try {
-            File file = new File(fileName);
+            File file = new File("src/data/EthicsCase");
             Scanner scanner = new Scanner(file);
             int index = 0;
-
+			
             while (scanner.hasNextLine() && index < cases.length) {
                 String category = scanner.nextLine().trim();
                 
@@ -61,18 +61,21 @@ public class MainMenuData
             System.err.println(e.getMessage());
         }
     }
-      public static void saveVerdictsToFile() {
-            try {
+		
+    public static void saveVerdictsToFile() {
+        try {
             PrintWriter writer = new PrintWriter(new FileWriter(""));
             
             for (int i = 0; i < cases.length; i++) {
-                if (cases[i] != null && cases[i].getVerdict() != null) {
-                    writer.println(cases[i].getTitle());
-                    writer.println(cases[i].getVerdict().toString());
-                 }
-               }
-                writer.close();
-             } catch (IOException e) {
+                if (cases[i] != null && cases[i].verdict != null) {
+                    writer.println(cases[i].verdict.getCaseTitle());
+					writer.println(cases[i].verdict.getStudentVerdict());
+					writer.println(cases[i].verdict.getReason());
+				}
+			}
+			writer.close();
+		} 
+		catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
