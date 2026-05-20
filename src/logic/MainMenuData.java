@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package logic;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
@@ -10,34 +15,67 @@ package logic;
  */
 public class MainMenuData
 {
-	public static EthicsCase[] cases = new EthicsCase[]
-	{
-		new PrivacyCase("The Always-On Microphone",
-                        "A smart speaker company recorded household conversations even when the device was not activated. Employees reviewed the recordings.", 
-                        "audio recordings"),
-                new MisinformationCase ("The Deepfake Politician", 
-                        "A deepfake video of a candidate saying things they never said spread widely online during an election before being identified as fake.", 
-                        "deepfake video"),
-                new AlgorithmCase("The Predictive Policing Bias", 
-                        "A city's law enforcement AI disproportionately targeted minority neighborhoods for increased patrols based on flawed historical data.", 
-                        "racial bias"),
-                new MisinformationCase("The AI Medical Miracle Hoax", 
-                        "An AI-generated article falsely claimed a common household ingredient could completely cure a serious illness, leading to widespread public panic.", 
-                        "AI-generated fake article"),
-                new IntellectualPropertyCase("AI Trained on Artist Work", 
-                        "An AI image generator was trained on millions of artworks scraped without permission. Artists receive no credit or payment.", 
-                        "AI-generated art"),
-                new AlgorithmCase("The Biased Hiring Bot",
-                        "A tech company's AI screening tool ranked male applicants higher than equally qualified female applicants.",
-                        "gender bias"),
-                new IntellectualPropertyCase("The Code Scraper", 
-                        "An AI coding assistant was trained on millions of lines of open-source repositories without respecting the original attribution licenses.", 
-                        "AI-generated code"),
-                new PrivacyCase("The Health Tracker Leak", 
-                        "A fitness app leaked users' precise real-time location data and medical history due to an unencrypted cloud server.", 
-                        "location and medical data"),
-                
-                
+	public static final int MAX_CASES = 8;
+        public static EthicsCase[] cases = new EthicsCase[MAX_CASES];
 
-	};
+        
+        public static void loadCasesFromFile(String fileName) {
+        try {
+            File file = new File(fileName);
+            Scanner scanner = new Scanner(file);
+            int index = 0;
+
+            while (scanner.hasNextLine() && index < cases.length) {
+                String category = scanner.nextLine().trim();
+                
+                if (!scanner.hasNextLine()) break;
+                String title = scanner.nextLine().trim();
+                
+                if (!scanner.hasNextLine()) break;
+                String description = scanner.nextLine().trim();
+                
+                if (!scanner.hasNextLine()) break;
+                String type = scanner.nextLine().trim();
+
+                switch (category) {
+                    case "PrivacyCase":
+                        cases[index] = new PrivacyCase(title, description, type);
+                        break;
+                    case "MisinformationCase":
+                        cases[index] = new MisinformationCase(title, description, type);
+                        break;
+                    case "AlgorithmCase":
+                        cases[index] = new AlgorithmCase(title, description, type);
+                        break;
+                    case "IntellectualPropertyCase":
+                        cases[index] = new IntellectualPropertyCase(title, description, type);
+                        break;
+                    default:
+                        cases[index] = new EthicsCase(title, description, type);
+                        break;
+                }
+                index++;
+            }
+            scanner.close();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+      public static void saveVerdictsToFile() {
+            try {
+            PrintWriter writer = new PrintWriter(new FileWriter(""));
+            
+            for (int i = 0; i < cases.length; i++) {
+                if (cases[i] != null && cases[i].getVerdict() != null) {
+                    writer.println(cases[i].getTitle());
+                    writer.println(cases[i].getVerdict().toString());
+                 }
+               }
+                writer.close();
+             } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+        
 }
