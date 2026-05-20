@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package menu;
+import logic.*;
 
 /**
  *
@@ -15,7 +16,21 @@ public class ResultsMenu extends javax.swing.JFrame {
      */
     public ResultsMenu() {
         initComponents();
+		countResult();
     }
+	
+	private void countResult()
+	{
+		int ethical = 0;
+		int unethical = 0;
+		for(EthicsCase i : MainMenuData.cases)
+		{
+			if(i.verdict.getStudentVerdict() == "ethical") ethical++;
+			else if(i.verdict.getStudentVerdict() == "unethical") unethical++;
+		}
+		jLabel2.setText(String.valueOf(ethical));
+		jLabel3.setText(String.valueOf(unethical));
+	}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +51,6 @@ public class ResultsMenu extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(440, 420));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Results");
@@ -53,6 +67,7 @@ public class ResultsMenu extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel5.setText("Unethical");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);

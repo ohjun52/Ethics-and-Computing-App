@@ -36,8 +36,5 @@ public class MainMenuData
                 new PrivacyCase("The Health Tracker Leak", 
                         "A fitness app leaked users' precise real-time location data and medical history due to an unencrypted cloud server.", 
                         "location and medical data"),
-                
-                
-
 	};
 }

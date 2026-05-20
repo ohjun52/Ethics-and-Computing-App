@@ -13,6 +13,8 @@ import logic.MainMenuData;
 public class ScenariosMenu extends javax.swing.JFrame {
 	
 	private static final int MAX_NUMBER = 7;
+	private static final String ETHICAL_COMMAND = "ethical";
+	private static final String UNETHICAL_COMMAND = "unethical";
 	
 	private static int scenariosNumber = 0;
 
@@ -22,13 +24,17 @@ public class ScenariosMenu extends javax.swing.JFrame {
     public ScenariosMenu() {
         initComponents();
 		scenariosNumber = 0;
+		buttonGroup1.add(jRadioButton1);
+		jRadioButton1.setActionCommand(ETHICAL_COMMAND);
+		buttonGroup1.add(jRadioButton2);
+		jRadioButton2.setActionCommand(UNETHICAL_COMMAND);
 		initMenu();
     }
 	
 	private void initMenu()
 	{
-		buttonGroup1.add(jRadioButton1);
-		buttonGroup1.add(jRadioButton2);
+		buttonGroup1.clearSelection();
+		jTextArea2.setText("");
 		jLabel2.setText(MainMenuData.cases[scenariosNumber].getCaseTitle());
 		jLabel4.setText(MainMenuData.cases[scenariosNumber].getCategory());
 		jTextArea1.setText(MainMenuData.cases[scenariosNumber].getCaseDescription());
