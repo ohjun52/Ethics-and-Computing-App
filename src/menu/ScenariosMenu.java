@@ -12,9 +12,9 @@ import logic.MainMenuData;
  */
 public class ScenariosMenu extends javax.swing.JFrame {
 	
-	private static final int MAX_NUMBER = 7;
-	private static final String ETHICAL_COMMAND = "ethical";
-	private static final String UNETHICAL_COMMAND = "unethical";
+	public static final int MAX_NUMBER = 7;
+	public static final String ETHICAL_COMMAND = "ethical";
+	public static final String UNETHICAL_COMMAND = "unethical";
 	
 	private static int scenariosNumber = 0;
 

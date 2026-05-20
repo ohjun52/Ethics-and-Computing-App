@@ -25,8 +25,8 @@ public class ResultsMenu extends javax.swing.JFrame {
 		int unethical = 0;
 		for(EthicsCase i : MainMenuData.cases)
 		{
-			if(i.verdict.getStudentVerdict() == "ethical") ethical++;
-			else if(i.verdict.getStudentVerdict() == "unethical") unethical++;
+			if(i.verdict.getStudentVerdict() == ScenariosMenu.ETHICAL_COMMAND) ethical++;
+			else if(i.verdict.getStudentVerdict() == ScenariosMenu.UNETHICAL_COMMAND) unethical++;
 		}
 		jLabel2.setText(String.valueOf(ethical));
 		jLabel3.setText(String.valueOf(unethical));
