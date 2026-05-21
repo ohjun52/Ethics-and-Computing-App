@@ -30,6 +30,7 @@ public class ScenariosMenu extends javax.swing.JFrame {
 		jRadioButton1.setActionCommand(ETHICAL_COMMAND);
 		buttonGroup1.add(jRadioButton2);
 		jRadioButton2.setActionCommand(UNETHICAL_COMMAND);
+		
 		initMenu();
     }
 	
@@ -175,6 +176,7 @@ public class ScenariosMenu extends javax.swing.JFrame {
 		}
 		else
 		{
+			MainMenuData.saveVerdictsToFile();
 			new ResultsMenu().setVisible(true);
 			this.dispose();
 		}

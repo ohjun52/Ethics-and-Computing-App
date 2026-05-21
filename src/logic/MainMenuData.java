@@ -64,13 +64,15 @@ public class MainMenuData
 		
     public static void saveVerdictsToFile() {
         try {
-            PrintWriter writer = new PrintWriter(new FileWriter(""));
+            PrintWriter writer = new PrintWriter(new FileWriter("src/data/UserData"));
             
-            for (int i = 0; i < cases.length; i++) {
-                if (cases[i] != null && cases[i].verdict != null) {
-                    writer.println(cases[i].verdict.getCaseTitle());
-					writer.println(cases[i].verdict.getStudentVerdict());
-					writer.println(cases[i].verdict.getReason());
+			for(EthicsCase ethicsCase : cases)
+			{
+				if(ethicsCase != null && ethicsCase.verdict != null)
+				{
+					writer.println(ethicsCase.verdict.getCaseTitle());
+					writer.println(ethicsCase.verdict.getStudentVerdict());
+					writer.println(ethicsCase.verdict.getReason());
 				}
 			}
 			writer.close();
